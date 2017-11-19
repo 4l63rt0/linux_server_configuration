@@ -1,10 +1,10 @@
-#Linux Server Configuration
+#Udacity - Full Stack Web Development - Linux Server Configuration
 
 ##Project Overview
 
 This will be a baseline installation of a Linux server hosting a web application. The server will be secure from a number of attack vectors, also a database will be configure to serve the web app in addition of the web app deployment.
 
-Build this system will give us a depp understanding of how to build from scratch a web application, its database and how to host it
+Build this system will give us a deep understanding of how to build from scratch a web application, its database and how to host it
 
 ##Getting Started
 
@@ -16,15 +16,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 **Grader username:password**  grader:grader
 
-###Create Server instance at lightsail
+###Create Server instance at LightSail
 
-* Create  server instance in [Amazon Lightsail](https://aws.amazon.com/ "LightSail")
-  - Plataform: Linux/Unix
+* Create server instance in [Amazon Lightsail](https://aws.amazon.com/ "LightSail")
+  - Platform: Linux/Unix
   - Blueprint: OS only / Ubuntu 16.04 LTS
 
 >You might need to wait a minute to be able to connect to the terminal. After the server instance is created you will have your public IP and other information about the server
 
-* Follow the instructions at amazon LightSail to connecto to the Terminal (SSH)
+* Follow the instructions at amazon LightSail to connect to the Terminal (SSH)
 
 
 ### Secure your server
@@ -35,7 +35,7 @@ These instructions will get you a copy of the project up and running on your loc
 
   <code>sudo apt-get upgrade</code>
 
->After the upgrade is done system will ask _What would you like to do about menu.lst?_ Go head and selet _keep the local version currently installed_
+>After the upgrade is done system will ask _What would you like to do about menu.lst?_ Go ahead and select _keep the local version currently installed_
 
 * Configure LightSail firewall to allow connections to the next ports:
 
@@ -45,7 +45,7 @@ These instructions will get you a copy of the project up and running on your loc
   |HTTP         |80     |
   |NTP          |123    |
 
-* Configure Uncomplicated Firewall (UFW) to only allo incoming connections from SSH (port 2200), HTTP (port 80) and NTP (port 123)
+* Configure Uncomplicated Firewall (UFW) to only allow incoming connections from SSH (port 2200), HTTP (port 80) and NTP (port 123)
 
 
 >**_Warning:_** When changing the SSH port, make sure that the firewall is open for port 2200 first, so that you don't lock yourself out of the server. When you change the SSH port, the Lightsail instance will no longer be accessible through the web app 'Connect using SSH' button. The button assumes the default port is being used. There are instructions on the same page for connecting from your terminal to the instance. Connect using those instructions and then follow the rest of the steps.
@@ -92,7 +92,7 @@ These instructions will get you a copy of the project up and running on your loc
 
   <code>sudo apt-get install finger</code>
 
-### Create a SSH key pair for user "grader" using the ssh-keygen tool as user authentification
+### Create a SSH key pair for user "grader" using the ssh-keygen tool as user authentication
 
 **This SSH key has to be generated in your local machine, no in the server**
 
@@ -108,9 +108,9 @@ These instructions will get you a copy of the project up and running on your loc
   - file1
   - file2.pub
 
->**file1** will be use for SSH remote connections
+>**file1** will be used for SSH remote connections
 
->**file2.pub** will be transfer to the server where you want to connecto
+>**file2.pub** will be transfer to the server where you want to connect
 
 * Save the public key (file2.pub) to the server
 
@@ -138,7 +138,7 @@ These instructions will get you a copy of the project up and running on your loc
 
   - If you set a passphrase you will need to enter it
 
-  - Disable the password base login to secure the authentification process
+  - Disable the password base login to secure the authentication process
 
     <code>sudo nano /etc/ssh/sshd_config</code>
 
@@ -148,9 +148,9 @@ These instructions will get you a copy of the project up and running on your loc
 
   - Restart "ssh" service
 
-    <code>sudo service ssh restar</code>
+    <code>sudo service ssh restart</code>
 
-### Prepapre to Deploy Project
+### Prepare to Deploy Project
 
 #### Configure the local time to UTC
 
@@ -191,7 +191,7 @@ These instructions will get you a copy of the project up and running on your loc
 
   <code>sudo -u postgres createdb departmentapps</code>
 
-* Create new user for dabatase
+* Create new user for database
 
   <code>sudo adduser catalog</code>
 
@@ -199,7 +199,7 @@ These instructions will get you a copy of the project up and running on your loc
 
   <code>sudo adduser catalog sudo</code>
 
-* Deny remote connections to database modifing the "pg_hda.conf" file.
+* Deny remote connections to database modifying the "pg_hda.conf" file.
 
   <code>sudo nano /etc/postgresql/9.1/main/pg_hba.conf</code>
 
@@ -268,11 +268,11 @@ These instructions will get you a copy of the project up and running on your loc
 
   <code>sudo pip install virtualenv</code>
 
-* Create virtual enviroment inside the Flask directory ""/var/www/Flask/Flask"
+* Create virtual environment inside the Flask directory ""/var/www/Flask/Flask"
 
   <code>sudo virtualenv venv</code>
 
-* Activate virtual enviroment to proceed to install Flask on it
+* Activate virtual environment to proceed to install Flask on it
 
  <code>source venv/bin/activate</code>
 
@@ -288,7 +288,7 @@ These instructions will get you a copy of the project up and running on your loc
 
   <code>Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</code>
 
-* Deactivate virtual enviroment
+* Deactivate virtual environment
 
   <code>deactivate</code>
 
